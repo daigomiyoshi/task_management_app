@@ -1,0 +1,5 @@
+ja:
+  user_accounts:
+    show:
+      warning: '口座情報を変更した場合は担当者に必ずご連絡ください。'
+      main_title: '口座情報'

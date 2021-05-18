@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_one :user_account, dependent: :destroy
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, uniqueness: true

@@ -3,7 +3,7 @@ ja:
     header:
       working_record: '稼働記録'
       payment_information: '支払い通知'
-      worker_account: '振込先口座'
+      user_account: '振込先口座'
       logout: 'ログアウト'
       login: 'ログイン'
       signup: 'ユーザー登録'

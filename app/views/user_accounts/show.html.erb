@@ -1,0 +1,40 @@
+<div class="alert alert-warning" role="alert">
+  <%= t('.warning') %>
+</div>
+
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= UserAccount.human_attribute_name(:bank_name) %></th>
+        <td><%= current_user.user_account.bank_name %></td>
+      </tr>
+      <tr>
+        <td><%= UserAccount.human_attribute_name(:bank_branch_name) %></th>
+        <td><%= current_user.user_account.bank_branch_name %></td>
+      </tr>
+      <tr>
+        <td><%= UserAccount.human_attribute_name(:bank_branch_code) %></th>
+        <td><%= current_user.user_account.bank_branch_code %></td>
+      </tr>
+      <tr>
+        <td><%= UserAccount.human_attribute_name(:bank_account_type) %></th>
+        <td><%= current_user.user_account.bank_account_type_i18n %></td>
+      </tr>
+      <tr>
+        <td><%= UserAccount.human_attribute_name(:bank_account_code) %></th>
+        <td><%= current_user.user_account.bank_account_code %></td>
+      </tr>
+      <tr>
+        <td><%= UserAccount.human_attribute_name(:bank_account_name) %></th>
+        <td><%= current_user.user_account.bank_account_name %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to t('button.edit'), edit_user_account_path, class: 'btn btn-info' %>
+</div>

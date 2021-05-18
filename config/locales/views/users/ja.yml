@@ -1,0 +1,13 @@
+ja:
+  users:
+    new:
+      warning: 'ユーザー情報を登録してください'
+      enter_last_name: '山田'
+      enter_first_name: '太郎'
+      enter_email: '例: example@example.com'
+      enter_password: '半角英数字6文字以上'
+      enter_password_confirmation: '確認のためもう一度入力してください'
+      registration: '登録'
+    create:
+      success: 'ユーザー登録が完了しました'
+      failure: 'ユーザー登録に失敗しました'

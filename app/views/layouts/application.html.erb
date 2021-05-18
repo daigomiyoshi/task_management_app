@@ -13,7 +13,17 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
-    <%= yield %>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/header_before_login' %>
+    <% end %>
+
+    <%= render 'shared/flash_message' %>
+
+    <div class="container py-5">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

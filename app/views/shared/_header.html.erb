@@ -1,0 +1,36 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light p-1" style="background-color:#fff;">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+     <%= image_tag 'logo.png', width: '100%', height: 'auto' %>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to t('.working_record'), root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t('.payment_information'), root_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'テストタロウ', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t('.worker_account'), root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to t('.logout'), root_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</header>

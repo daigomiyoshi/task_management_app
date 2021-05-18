@@ -1,0 +1,6 @@
+ja:
+  enums:
+    user_account:
+      bank_account_type:
+        savings: '普通'
+        checking: '当座'

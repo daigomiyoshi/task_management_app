@@ -31,6 +31,7 @@ gem 'jquery-rails', '~> 4.4'
 gem 'rails-i18n', '~> 6.0'
 gem 'font-awesome-sass', '~> 5.15', '>= 5.15.1'
 gem 'sorcery', '~> 0.16.1'
+gem 'enum_help', '~> 0.0.17'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

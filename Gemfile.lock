@@ -82,6 +82,8 @@ GEM
     crass (1.0.6)
     debug_inspector (1.1.0)
     diff-lcs (1.4.4)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -287,6 +289,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   bootstrap (~> 4.5.0)
   byebug
+  enum_help (~> 0.0.17)
   font-awesome-sass (~> 5.15, >= 5.15.1)
   jbuilder (~> 2.7)
   jquery-rails (~> 4.4)

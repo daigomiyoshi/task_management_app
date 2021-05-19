@@ -1,5 +1,9 @@
 ja:
   enums:
+    project:
+      project_status:
+        finished: '終了'
+        doing: '稼働中'
     user_account:
       bank_account_type:
         savings: '普通'

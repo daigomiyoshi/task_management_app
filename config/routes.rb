@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
   resource :user_account, only: %i[show edit update]
+  resources :projects, only: %i[index show edit update destroy]
 end
- 

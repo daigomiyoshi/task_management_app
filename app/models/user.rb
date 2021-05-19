@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :user_account, dependent: :destroy
   has_many :user_in_charges, dependent: :destroy
   has_many :projects, through: :user_in_charges
+  has_many :work_results, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

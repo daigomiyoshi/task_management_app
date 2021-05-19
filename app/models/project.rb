@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   has_many :user_in_charges, dependent: :destroy
   has_many :users, through: :user_in_charges
+  has_many :work_results, dependent: :destroy
 
   enum project_status: { finished: 0, doing: 1 }
 

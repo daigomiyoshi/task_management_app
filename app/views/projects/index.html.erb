@@ -3,11 +3,15 @@
 </div>
 
 <div class="main-content">
+  <div style="text-align:right; margin:1em 3em">
+    <%= "#{l Date.today, format: :year_month} 稼働状況" %>
+  </div>
   <table class="table">
     <tbody>
       <% @projects.each do |project| %>
         <tr><td>
-          <%= link_to project.project_name_with_status, '#', class: "text-dark" %>
+          <%= link_to project.project_name_with_status, 
+            work_result_monthly_path(project.id, Date.today.year, Date.today.month), class: "text-dark" %>
         </tr></td>
       <% end %>
     </tbody>

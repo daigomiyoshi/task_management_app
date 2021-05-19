@@ -3,3 +3,9 @@ ja:
     show:
       warning: '口座情報を変更した場合は担当者に必ずご連絡ください。'
       main_title: '口座情報'
+    edit:
+      warning: '口座情報を変更した場合は担当者に必ずご連絡ください。'
+      main_title: '口座情報'
+    update:
+      success: '口座情報を更新しました'
+      failure: '口座情報の更新に失敗しました'

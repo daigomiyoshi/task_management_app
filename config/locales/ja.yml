@@ -8,3 +8,4 @@ ja:
       default: "%Y/%m/%d %H:%M:%S"
   button:
     edit: '編集'
+    update: '更新'

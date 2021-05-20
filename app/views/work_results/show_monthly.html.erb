@@ -1,0 +1,51 @@
+<div class="border-left-line">
+  <%= "#{@project.project_name} | #{t('.main_title')}" %>
+</div>
+
+<div class="work-result-main-content">
+  <div class="main-content-side">
+    <div class="this-month"><%= l @this_month, format: :year_month %></div>
+    <div class="next-month">
+      <%= link_to t('.next_month'), 
+        work_result_monthly_path(@project.id, @this_month.next_month.year, @this_month.next_month.month),
+        class: "btn btn-outline-dark btn-sm" %>
+    </div>
+    <div class="last-month">
+      <%= link_to t('.last_month'), 
+        work_result_monthly_path(@project.id, @this_month.last_month.year, @this_month.last_month.month),
+        class: "btn btn-outline-dark btn-sm" %>
+    </div>
+  </div>
+
+  <div class="main-content-main">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= WorkResult.human_attribute_name(:working_on) %></th>
+            <th><%= WorkResult.human_attribute_name(:start_at) %></th>
+            <th><%= WorkResult.human_attribute_name(:working_hours) %></th>
+            <th><%= t('.working_status') %></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% (@beginning_of_month..@end_of_month).each do |day| %>
+            <tr>
+              <td><%= l day, format: :month_day %></td>
+              <td>00:00</td>
+              <td>02:30</td>
+              <td><%= link_to t('.create_work_result'), 
+                new_work_result_daily_path(@project.id, @year ,@month, day.day),
+                class: 'btn btn-info' %></td>
+              <td>修正する</td>
+              <td><i class="fas fa-external-link-alt"></i></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

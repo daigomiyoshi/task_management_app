@@ -1,0 +1,17 @@
+ja:
+  work_results:
+    show_monthly:
+      main_title: '稼働状況'
+      next_month: '次の月へ'
+      last_month: '前の月へ'
+      working_status: '稼働ステータス'
+      work_result_fixed: '稼働FIX済み'
+      create_work_result: '稼働実績を記録する'
+      create_work_result_without_work: '非稼働登録'
+      edit_work_result: '修正する'
+    new:
+      main_title: '稼働記録'
+      button_create: '稼働登録'
+    create:
+      success: '稼働登録しました'
+      failure: '稼働登録に失敗しました'

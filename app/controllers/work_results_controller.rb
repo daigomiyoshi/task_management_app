@@ -21,6 +21,7 @@ class WorkResultsController < ApplicationController
 
   def create
     @work_result = current_user.work_results.build(work_result_params)
+    binding.pry
     if @work_result.save
       redirect_to work_result_monthly_path(@project.id, @year, @month), success: t('.success')
     else
@@ -65,7 +66,7 @@ class WorkResultsController < ApplicationController
     params[:work_result][:end_at] = Time.parse("#{@year}/#{@month}/#{@day} #{params[:work_result][:end_at]}")
     params[:work_result][:project_id] = @project.id
     params.require(:work_result).permit(
-      :working_on, :start_at, :end_at, :working_content, :project_id, :project_category_id
+      :working_on, :start_at, :end_at, :working_hours, :working_content, :project_id, :project_category_id
     )
   end
 end

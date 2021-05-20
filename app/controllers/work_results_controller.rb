@@ -65,7 +65,7 @@ class WorkResultsController < ApplicationController
     params[:work_result][:end_at] = Time.parse("#{@year}/#{@month}/#{@day} #{params[:work_result][:end_at]}")
     params[:work_result][:project_id] = @project.id
     params.require(:work_result).permit(
-      :working_on, :start_at, :end_at, :working_content, :project_id, :project_category_id
+      :working_on, :start_at, :end_at, :working_hours, :working_content, :project_id, :project_category_id
     )
   end
 end

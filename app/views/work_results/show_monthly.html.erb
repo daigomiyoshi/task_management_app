@@ -34,13 +34,19 @@
           <% (@beginning_of_month..@end_of_month).each do |day| %>
             <tr>
               <td><%= l day, format: :month_day %></td>
-              <td>00:00</td>
-              <td>02:30</td>
-              <td><%= link_to t('.create_work_result'), 
-                new_work_result_daily_path(@project.id, @year ,@month, day.day),
-                class: 'btn btn-info' %></td>
-              <td>修正する</td>
-              <td><i class="fas fa-external-link-alt"></i></td>
+              <td><%= get_work_result_info(@project.id, @year ,@month, day.day, 'start_at') %></td>
+              <td><%= get_work_result_info(@project.id, @year ,@month, day.day, 'working_hours') %></td>
+              <td>
+                <%= render_working_status(@year ,@month, day.day) %>
+              </td>
+              <td>
+                <%= render_edit_or_create_without_work_button(@year ,@month, day.day) %>
+              </td>
+              <td>
+                <%= link_to work_result_daily_path(@project.id, @year ,@month, day.day) do %>
+                  <i class="fas fa-external-link-alt" style="color: #000"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

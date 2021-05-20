@@ -7,6 +7,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+      hour_minutes: "%H:%M"
   button:
     edit: '編集'
     update: '更新'

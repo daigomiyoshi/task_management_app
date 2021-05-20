@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
   resource :user_account, only: %i[show edit update new create destroy]
   get 'projects/:project_id/:year/:month', to: 'work_results#show_monthly', as: 'work_result_monthly'
-  get 'projects/:project_id/:year/:month/:day', to: 'work_results#new', as: 'new_work_result_daily'
-  post 'projects/:project_id/:year/:month/:day', to: 'work_results#create'
+  get 'projects/:project_id/:year/:month/:day/new', to: 'work_results#new', as: 'new_work_result_daily'
+  post 'projects/:project_id/:year/:month/:day/new', to: 'work_results#create'
   get 'projects/:project_id/:year/:month/:day', to: 'work_results#show', as: 'work_result_daily'
   get 'projects/:project_id/:year/:month/:day/edit', to: 'work_results#edit', as: 'edit_work_result_daily'
-  patch 'projects/:project_id/:year/:month/:day', to: 'work_results#update', as: 'update_work_result_daily'
+  patch 'projects/:project_id/:year/:month/:day/edit', to: 'work_results#update'
   delete 'projects/:project_id/:year/:month/:day', to: 'work_results#destroy', as: 'delete_work_result_daily'
 end

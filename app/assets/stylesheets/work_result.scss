@@ -7,8 +7,25 @@
 }
 
 .main-content-side {
-  margin:1em 0em;
+  margin:1em 1em;
   width: 10%;
+}
+
+.this-month {
+  text-align: center;
+  display: block;  
+}
+
+.next-month {
+  margin: 1em 0em;
+  text-align: center;
+  display: block;
+}
+
+.last-month {
+  margin: 1em 0em;
+  text-align: center;
+  display: block;
 }
 
 .main-content-main {

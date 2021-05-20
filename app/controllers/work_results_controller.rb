@@ -21,7 +21,6 @@ class WorkResultsController < ApplicationController
 
   def create
     @work_result = current_user.work_results.build(work_result_params)
-    binding.pry
     if @work_result.save
       redirect_to work_result_monthly_path(@project.id, @year, @month), success: t('.success')
     else

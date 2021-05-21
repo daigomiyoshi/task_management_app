@@ -43,9 +43,7 @@
                 <%= render_edit_or_create_without_work_button(@year ,@month, day.day) %>
               </td>
               <td>
-                <%= link_to work_result_daily_path(@project.id, @year ,@month, day.day) do %>
-                  <i class="fas fa-external-link-alt" style="color: #000"></i>
-                <% end %>
+                <%= render_show_button(@year ,@month, day.day) %>
               </td>
             </tr>
           <% end %>

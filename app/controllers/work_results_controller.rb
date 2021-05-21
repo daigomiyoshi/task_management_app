@@ -1,6 +1,8 @@
 class WorkResultsController < ApplicationController
-  helper_method :get_work_result_info, :render_working_status, :render_edit_or_create_without_work_button
-
+  helper_method :get_work_result_info, 
+                :render_working_status, 
+                :render_edit_or_create_without_work_button,
+                :render_show_button
   before_action :set_project, only: %i[show_monthly new create show]
   before_action :set_project_categories, only: %i[new create]
   before_action :set_year, only: %i[show_monthly new create show]
@@ -48,24 +50,39 @@ class WorkResultsController < ApplicationController
   def render_working_status(year, month, day)
     if @work_result.nil?
       "
-        <a class='btn btn-info' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/new'>
+        <a class='btn btn-info btn-block' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/new'>
         #{t('.create_work_result')}</a>
       ".html_safe
     else
-      "<button type='button' class='btn btn-secondary' disabled>#{t('.work_result_fixed')}</button>".html_safe
+      "
+        <button type='button' class='btn btn-secondary btn-block' disabled>
+        #{t('.work_result_fixed')}</button>
+      ".html_safe
     end
   end
 
   def render_edit_or_create_without_work_button(year, month, day)
     if @work_result.nil?
       "
-        <a class='btn btn-info' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/creat_without_work'>
-        #{t('.create_work_result_without_work')}</a>
+        <a class='btn btn-info btn-block' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/creat_without_work'>
+          #{t('.create_work_result_without_work')}
+        </a>
       ".html_safe
     else
       "
-        <a class='btn btn-info' href='/projects/#{@project.id}//#{year}/#{month}/#{day}/edit'>
-        #{t('.edit_work_result')}</a>
+        <a class='btn btn-info btn-block' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/edit'>
+          #{t('.edit_work_result')}
+        </a>
+      ".html_safe
+    end
+  end
+
+  def render_show_button(year, month, day)
+    if !@work_result.nil?
+      "
+        <a href='/projects/#{@project.id}/#{year}/#{month}/#{day}'>
+          <i class='fas fa-external-link-alt' style='color: #000'></i>
+        </a>
       ".html_safe
     end
   end

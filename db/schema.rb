@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_051044) do
+ActiveRecord::Schema.define(version: 2021_05_21_091659) do
 
   create_table "payment_results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "working_month", null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_05_21_051044) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "projects_id"
+    t.index ["projects_id"], name: "index_payment_results_on_projects_id"
     t.index ["user_id"], name: "index_payment_results_on_user_id"
   end
 
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_05_21_051044) do
     t.index ["user_id"], name: "index_work_results_on_user_id"
   end
 
+  add_foreign_key "payment_results", "projects", column: "projects_id"
   add_foreign_key "payment_results", "users"
   add_foreign_key "project_categories", "projects"
   add_foreign_key "user_accounts", "users"

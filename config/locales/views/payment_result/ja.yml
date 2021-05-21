@@ -1,0 +1,5 @@
+ja:
+  payment_results:
+    index:
+      not_yet_published_payment_not: 'まだ支払通知書は発行されていません'
+      download_payment_note: '支払通知書をダウンロード'

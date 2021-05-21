@@ -8,6 +8,15 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       hour_minutes: "%H:%M"
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "¥%n"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
   button:
     create: '登録'
     edit: '編集'

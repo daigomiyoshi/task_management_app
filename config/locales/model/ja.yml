@@ -12,6 +12,8 @@ ja:
         password: パスワード
         password_confirmation: パスワード(確認)
         role: 権限
+      project:
+        project_name: '案件名'
       project_category:
         project_category_name: '稼働カテゴリ'
       work_result:
@@ -21,6 +23,11 @@ ja:
         working_hours: '稼働時間(H)'
         working_content: '稼動内容'
         project_category_id: '稼働カテゴリ'
+      payment_result:
+        working_month: 稼働月
+        payment_amount: 業務委託金額
+        payment_on: 振込日
+        payment_note_url: 支払通知書URL
       user_account:
         bank_name: '銀行名'
         bank_branch_name: '支店名'

@@ -3,14 +3,14 @@ class WorkResultsController < ApplicationController
                 :render_working_status, 
                 :render_edit_or_create_without_work_button,
                 :render_show_button
-  before_action :set_project, only: %i[show_monthly new create show edit update]
+  before_action :set_project, only: %i[show_monthly new create show edit update destroy]
   before_action :set_project_categories, only: %i[new create edit]
-  before_action :set_year, only: %i[show_monthly new create show edit update]
-  before_action :set_month, only: %i[show_monthly new create show edit update]
-  before_action :set_day, only: %i[new create show edit update]
-  before_action :set_this_day, only: %i[new create show edit update]
+  before_action :set_year, only: %i[show_monthly new create show edit update destroy]
+  before_action :set_month, only: %i[show_monthly new create show edit update destroy]
+  before_action :set_day, only: %i[new create show edit update destroy]
+  before_action :set_this_day, only: %i[new create show edit update destroy]
   before_action :set_work_results, only: %i[show_monthly]
-  before_action :set_work_result, only: %i[show edit update]
+  before_action :set_work_result, only: %i[show edit update destroy]
   before_action :set_project_category, only: %i[show]
   before_action :work_result_params, only: %i[create update]
 
@@ -47,7 +47,10 @@ class WorkResultsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @work_result.destroy!
+    redirect_to work_result_monthly_path(@project.id, @year, @month), success: t('.success')
+  end
 
   private
 
@@ -105,7 +108,7 @@ class WorkResultsController < ApplicationController
   end
 
   def set_project_categories
-    @project_categories = ProjectCategory.where(project_id: params[:project_id])
+    @project_categories = ProjectCategory.where(project_id: @project)
   end
 
   def set_year
@@ -125,11 +128,11 @@ class WorkResultsController < ApplicationController
   end
 
   def set_work_results
-    @work_results = current_user.work_results.where(project_id: params[:project_id])
+    @work_results = current_user.work_results.where(project_id: @project)
   end
 
   def set_work_result
-    @work_result = current_user.work_results.find_by(project_id: params[:project_id], working_on: @this_day)
+    @work_result = current_user.work_results.find_by(project_id: @project, working_on: @this_day)
   end
 
   def set_project_category

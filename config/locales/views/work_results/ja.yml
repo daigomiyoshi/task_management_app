@@ -23,4 +23,6 @@ ja:
     update:
       success: '稼働内容を更新しました'
       failure: '稼働内容の更新に失敗しました'
+    destroy:
+      success: '稼働内容を削除しました'
       

@@ -1,8 +1,9 @@
 ja:
   user_accounts:
     show:
-      warning: '口座情報を変更した場合は担当者に必ずご連絡ください。'
+      warning: '口座情報を変更したい場合は担当者にご連絡ください。'
       main_title: '口座情報'
+      you_have_no_bank_account: '口座情報が登録されておりません'
     edit:
       warning: '口座情報を変更した場合は担当者に必ずご連絡ください。'
       main_title: '口座情報'

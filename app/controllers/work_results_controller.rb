@@ -1,12 +1,15 @@
 class WorkResultsController < ApplicationController
   helper_method :get_work_result_info, :render_working_status, :render_edit_or_create_without_work_button
-  before_action :set_work_results, only: %i[show_monthly]
-  before_action :set_project, only: %i[show_monthly new create]
+
+  before_action :set_project, only: %i[show_monthly new create show]
   before_action :set_project_categories, only: %i[new create]
-  before_action :set_year, only: %i[show_monthly new create]
-  before_action :set_month, only: %i[show_monthly new create]
-  before_action :set_day, only: %i[new create]
-  before_action :set_this_day, only: %i[new create]
+  before_action :set_year, only: %i[show_monthly new create show]
+  before_action :set_month, only: %i[show_monthly new create show]
+  before_action :set_day, only: %i[new create show]
+  before_action :set_this_day, only: %i[new create show]
+  before_action :set_work_results, only: %i[show_monthly]
+  before_action :set_work_result, only: %i[show]
+  before_action :set_project_category, only: %i[show]
   before_action :work_result_params, only: %i[create]
 
   def show_monthly
@@ -28,6 +31,8 @@ class WorkResultsController < ApplicationController
       render :new
     end
   end
+  
+  def show; end
 
   private
 
@@ -65,10 +70,6 @@ class WorkResultsController < ApplicationController
     end
   end
 
-  def set_work_results
-    @work_results = current_user.work_results.where(project_id: params[:project_id])
-  end
-
   def set_project
     @project = Project.find(params[:project_id])
   end
@@ -91,6 +92,18 @@ class WorkResultsController < ApplicationController
 
   def set_this_day
     @this_day = Date.parse("#{@year}/#{@month}/#{@day}")
+  end
+
+  def set_work_results
+    @work_results = current_user.work_results.where(project_id: params[:project_id])
+  end
+
+  def set_work_result
+    @work_result = current_user.work_results.find_by(project_id: params[:project_id], working_on: @this_day)
+  end
+
+  def set_project_category
+    @project_category = ProjectCategory.find(@work_result.project_category_id)
   end
 
   def work_result_params

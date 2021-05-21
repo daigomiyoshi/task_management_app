@@ -3,15 +3,15 @@ class WorkResultsController < ApplicationController
                 :render_working_status, 
                 :render_edit_or_create_without_work_button,
                 :render_show_button
-  before_action :set_project, only: %i[show_monthly new create show edit update destroy]
+  before_action :set_project, only: %i[show_monthly new create creat_without_work show edit update destroy]
   before_action :set_project_categories, only: %i[new create edit]
-  before_action :set_year, only: %i[show_monthly new create show edit update destroy]
-  before_action :set_month, only: %i[show_monthly new create show edit update destroy]
-  before_action :set_day, only: %i[new create show edit update destroy]
-  before_action :set_this_day, only: %i[new create show edit update destroy]
+  before_action :set_year, only: %i[show_monthly new create creat_without_work show edit update destroy]
+  before_action :set_month, only: %i[show_monthly new create creat_without_work show edit update destroy]
+  before_action :set_day, only: %i[new create creat_without_work show edit update destroy]
+  before_action :set_this_day, only: %i[new create creat_without_work show edit update destroy]
   before_action :set_work_results, only: %i[show_monthly]
   before_action :set_work_result, only: %i[show edit update destroy]
-  before_action :set_project_category, only: %i[show]
+  before_action :set_project_category_name, only: %i[show]
   before_action :work_result_params, only: %i[create update]
 
   def show_monthly
@@ -31,6 +31,20 @@ class WorkResultsController < ApplicationController
     else
       flash.now[:danger] = t('.failure')
       render :new
+    end
+  end
+
+  def creat_without_work
+    @work_result = current_user.work_results.build(
+      project_id: @project.id,
+      project_category_id: nil,
+      working_on: @this_day,
+      start_at: Time.parse("#{@this_day} 00:00"),
+      end_at: Time.parse("#{@this_day} 00:00"),
+      working_hours: 0.0
+    )
+    if @work_result.save
+      redirect_to work_result_monthly_path(@project.id, @year, @month), success: t('.success')
     end
   end
 
@@ -67,12 +81,14 @@ class WorkResultsController < ApplicationController
     if @work_result.nil?
       "
         <a class='btn btn-info btn-block' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/new'>
-        #{t('.create_work_result')}</a>
+          #{t('.create_work_result')}
+        </a>
       ".html_safe
     else
       "
         <button type='button' class='btn btn-secondary btn-block' disabled>
-        #{t('.work_result_fixed')}</button>
+          #{t('.work_result_fixed')}
+        </button>
       ".html_safe
     end
   end
@@ -80,13 +96,14 @@ class WorkResultsController < ApplicationController
   def render_edit_or_create_without_work_button(year, month, day)
     if @work_result.nil?
       "
-        <a class='btn btn-info btn-block' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/creat_without_work'>
+        <a class='btn btn-info btn-block' data-method='post'
+          href='/projects/#{@project.id}/#{year}/#{month}/#{day}/creat_without_work'>
           #{t('.create_work_result_without_work')}
         </a>
       ".html_safe
     else
       "
-        <a class='btn btn-info btn-block' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/edit'>
+        <a class='btn btn-outline-secondary btn-block' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/edit'>
           #{t('.edit_work_result')}
         </a>
       ".html_safe
@@ -135,8 +152,12 @@ class WorkResultsController < ApplicationController
     @work_result = current_user.work_results.find_by(project_id: @project, working_on: @this_day)
   end
 
-  def set_project_category
-    @project_category = ProjectCategory.find(@work_result.project_category_id)
+  def set_project_category_name
+    if @work_result.project_category_id.nil?
+      @project_category_name = ''
+    else
+      @project_category_name = ProjectCategory.find(@work_result.project_category_id).project_category_name
+    end
   end
 
   def work_result_params

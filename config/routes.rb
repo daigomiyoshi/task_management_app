@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'projects/:project_id/:year/:month', to: 'work_results#show_monthly', as: 'work_result_monthly'
   get 'projects/:project_id/:year/:month/:day/new', to: 'work_results#new', as: 'new_work_result_daily'
   post 'projects/:project_id/:year/:month/:day/new', to: 'work_results#create'
+  post 'projects/:project_id/:year/:month/:day/creat_without_work', to: 'work_results#creat_without_work'
   get 'projects/:project_id/:year/:month/:day', to: 'work_results#show', as: 'work_result_daily'
   get 'projects/:project_id/:year/:month/:day/edit', to: 'work_results#edit', as: 'edit_work_result_daily'
   patch 'projects/:project_id/:year/:month/:day/edit', to: 'work_results#update'

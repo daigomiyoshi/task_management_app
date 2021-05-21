@@ -18,3 +18,9 @@ ja:
     show:
       main_title: '稼働内容詳細'
       delete_confirm: '稼働実績を削除してよろしいでしょうか？'
+    edit:
+      main_title: '稼働編集'
+    update:
+      success: '稼働内容を更新しました'
+      failure: '稼働内容の更新に失敗しました'
+      

@@ -1,44 +1,13 @@
-<div class="border-left-line">
-  <%= "#{@project.project_name} | #{t('.main_title')}" %>
-</div>
-
-<div class="main-content">
-  <%= form_with model: @work_result, url: new_work_result_daily_path do |f| %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <td><%= f.label :working_on %></th>
-          <td><%= l @this_day, format: :default %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :start_at %></th>
-          <td><%= f.time_field :start_at, class:'form-control' %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :end_at %></th>
-          <td><%= f.time_field :end_at, class:'form-control' %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :working_hours %></th>
-          <td><%= f.number_field :working_hours, step: "0.1", class:'form-control' %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :project_category_id %></th>
-          <td><%= f.collection_select :project_category_id, 
-            @project_categories, :id, :project_category_name, 
-            { :include_blank => true }, { class:'form-control' } %>
-          </td>
-        </tr>
-        <tr>
-          <td><%= f.label :working_content %></th>
-          <td><%= f.text_area :working_content, class:'form-control' %></td>
-        </tr>
-      </tbody>
-    </table>
-    <%= f.submit t('.button_create'), class: 'btn btn-primary' %>
-  <% end %>
-</div>
+<%= render 'form', 
+    url: new_work_result_daily_path, 
+    main_title: t('.main_title'),
+    button: t('button.create')
+%>
 
 <div>
-※ 終了時刻が24時を過ぎた場合は、時間をずらして0-24時に収まる範囲で記載ください。
+  <ul>
+    <li>※ 終了時刻が24時を過ぎた場合は、時間をずらして0-24時に収まる範囲で記載ください</li>
+    <li>※ 休憩時間等もある場合は、稼働時間は必ずしも開始時刻と終了時刻の差分と一致している必要はありません</li>
+    <li>※ 稼働時間は小数で記載ください（例: 2.5時間の稼働であれば、「2.5」）</li>
+  </ul>
 </div>

@@ -1,7 +1,7 @@
 class WorkResult < ApplicationRecord
   belongs_to :user
   belongs_to :project
-  belongs_to :project_category
+  belongs_to :project_category, optional: true
 
   validates :working_on, presence: true
   validates :working_hours, length: { minimum: 0, maximum: 24 }

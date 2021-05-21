@@ -18,7 +18,7 @@ ja:
         working_on: '稼働日'
         start_at: '開始時刻'
         end_at: '終了時刻'
-        working_hours: '稼働時間'
+        working_hours: '稼働時間(H)'
         working_content: '稼動内容'
         project_category_id: '稼働カテゴリ'
       user_account:

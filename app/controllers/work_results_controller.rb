@@ -1,4 +1,5 @@
 class WorkResultsController < ApplicationController
+  helper_method :get_work_result_info, :render_working_status, :render_edit_or_create_without_work_button
   before_action :set_work_results, only: %i[show_monthly]
   before_action :set_project, only: %i[show_monthly new create]
   before_action :set_project_categories, only: %i[new create]
@@ -9,7 +10,6 @@ class WorkResultsController < ApplicationController
   before_action :work_result_params, only: %i[create]
 
   def show_monthly
-    @work_results_monthly = @work_results.filter_by_year_month(@year, @month)
     @this_month = Date.parse("#{@year}/#{@month}")
     @beginning_of_month = @this_month.beginning_of_month
     @end_of_month = @this_month.end_of_month
@@ -30,6 +30,40 @@ class WorkResultsController < ApplicationController
   end
 
   private
+
+  def get_work_result_info(project_id, year, month, day, type)
+    @work_result = @work_results.filter_by_year_month_day(year, month, day)[0]
+    if type == 'start_at'
+      @work_result.nil? ? '00:00' : I18n.l(@work_result.start_at, format: :hour_minutes)
+    elsif type == 'working_hours'
+      @work_result.nil? ? '0.0' : @work_result.working_hours.to_s
+    end
+  end
+
+  def render_working_status(year, month, day)
+    if @work_result.nil?
+      "
+        <a class='btn btn-info' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/new'>
+        #{t('.create_work_result')}</a>
+      ".html_safe
+    else
+      "<button type='button' class='btn btn-secondary' disabled>#{t('.work_result_fixed')}</button>".html_safe
+    end
+  end
+
+  def render_edit_or_create_without_work_button(year, month, day)
+    if @work_result.nil?
+      "
+        <a class='btn btn-info' href='/projects/#{@project.id}/#{year}/#{month}/#{day}/creat_without_work'>
+        #{t('.create_work_result_without_work')}</a>
+      ".html_safe
+    else
+      "
+        <a class='btn btn-info' href='/projects/#{@project.id}//#{year}/#{month}/#{day}/edit'>
+        #{t('.edit_work_result')}</a>
+      ".html_safe
+    end
+  end
 
   def set_work_results
     @work_results = current_user.work_results.where(project_id: params[:project_id])

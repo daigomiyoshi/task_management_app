@@ -1,0 +1,45 @@
+<div class="border-left-line">
+  <%= "#{@project.project_name} | #{t('.main_title')}" %>
+</div>
+
+<div class="main-content">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= WorkResult.human_attribute_name(:working_on) %></th>
+        <td><%= @work_result.working_on %></td>
+      </tr>
+      <tr>
+        <td><%= WorkResult.human_attribute_name(:start_at) %></th>
+        <td><%= l @work_result.start_at, format: :hour_minutes %></td>
+      </tr>
+      <tr>
+        <td><%= WorkResult.human_attribute_name(:end_at) %></th>
+        <td><%= l @work_result.end_at, format: :hour_minutes %></td>
+      </tr>
+      <tr>
+        <td><%= WorkResult.human_attribute_name(:working_hours) %></th>
+        <td><%= @work_result.working_hours %></td>
+      </tr>
+      <tr>
+        <td><%= WorkResult.human_attribute_name(:project_category_id) %></th>
+        <td><%= @project_category.project_category_name %></td>
+      </tr>
+      <tr>
+        <td><%= WorkResult.human_attribute_name(:working_content) %></th>
+        <td><%= @work_result.working_content %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to t('button.edit'), 
+    edit_work_result_daily_path(@project.id, @year, @month, @day),
+    class: 'btn btn-info'
+  %>
+  <%= link_to t('button.delete'), 
+    delete_work_result_daily_path(@project.id, @year, @month, @day),
+    method: :delete,
+    data: {confirm: t('.delete_confirm')},
+    class: 'btn btn-danger'
+  %>
+</div>

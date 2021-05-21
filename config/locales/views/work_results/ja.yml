@@ -15,3 +15,6 @@ ja:
     create:
       success: '稼働登録しました'
       failure: '稼働登録に失敗しました'
+    show:
+      main_title: '稼働内容詳細'
+      delete_confirm: '稼働実績を削除してよろしいでしょうか？'

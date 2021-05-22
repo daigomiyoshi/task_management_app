@@ -1,0 +1,27 @@
+<div class="border-left-line">
+  <%= "#{main_title}" %>
+</div>
+
+<div class="main-content">
+  <%= form_with model: @project, url: url, local: true do |f| %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= f.label :project_name %></th>
+          <td><%= f.text_field :project_name, class:'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :project_status %></th>
+          <td>
+            <%= f.select :project_status,
+              Project.project_statuses_i18n.keys.map{
+                |k| [I18n.t("enums.project.project_status.#{k}"), k]
+              }, {}, { class:'form-control' } 
+            %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit button, class: 'btn btn-primary' %>
+  <% end %>
+</div>

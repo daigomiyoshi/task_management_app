@@ -20,3 +20,19 @@ ja:
         to_projects: 'Project状況一覧へ'
         to_user_in_charges: '案件担当状況一覧へ'
         to_payment_results: '支払状況一覧へ'
+    projects:
+      index:
+        main_title: '案件一覧'
+        delete_confirm: '案件を削除してもよろしいですか？'
+      new:
+        main_title: '案件登録'
+      create:
+        success: '新規案件を登録しました'
+        failure: '新規案件の登録に失敗しました'
+      edit:
+        main_title: '案件情報編集'
+      update:
+        success: '案件情報を更新しました'
+        failure: '案件情報の登録に失敗しました'
+      destroy:
+        success: '案件を削除しました'

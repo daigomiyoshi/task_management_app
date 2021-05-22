@@ -1,0 +1,45 @@
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <div style="text-align:right; margin:1em 3em">
+    <%= link_to t('button.create'), new_admin_project_path, class: 'btn btn-info' %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= Project.human_attribute_name(:project_name) %></th>
+        <th><%= Project.human_attribute_name(:project_status) %></th>
+        <th><%= Project.human_attribute_name(:created_at) %></th>
+        <th><%= Project.human_attribute_name(:updated_at) %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td>
+            <%= link_to project.project_name, 
+            admin_project_category_path(ProjectCategory.where(project_id: project.id)),
+            class: 'text-dark'
+            %>
+          </td>
+          <td><%= project.project_status_i18n %></td>
+          <td><%= l project.created_at, format: :default %></td>
+          <td><%= l project.updated_at, format: :default %></td>
+          <td><%= link_to t('button.edit'), edit_admin_project_path(project), class: 'btn btn-info' %></td>
+          <td>
+            <%= link_to t('button.delete'), 
+                admin_project_path(project), 
+                method: :delete,
+                data: { confirm: t('.delete_confirm') },
+                class: 'btn btn-danger'
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

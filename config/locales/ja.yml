@@ -22,3 +22,5 @@ ja:
     edit: '編集'
     update: '更新'
     delete: '削除'
+  message:
+    not_admin_user: '管理者権限がありません'

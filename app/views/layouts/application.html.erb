@@ -14,7 +14,11 @@
 
   <body>
     <% if logged_in? %>
-      <%= render 'shared/header' %>
+      <% if current_user.admin? %>
+        <%= render 'admin/shared/header' %>
+      <% else %>
+        <%= render 'shared/header' %>
+      <% end %>
     <% else %>
       <%= render 'shared/header_before_login' %>
     <% end %>

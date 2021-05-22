@@ -1,0 +1,22 @@
+ja:
+  admin:
+    shared:
+      header:
+        logout: 'ログアウト'
+    user_sessions:
+      new:
+        enter_email: 'example@example.com'
+        enter_password: '登録したパスワード'
+        warning: 'ログインしてください'
+        login: 'ログイン'
+      create:
+        success: 'ログインしました'
+        not_admin_user: '管理者権限がありません'
+        failure: 'ログインに失敗しました'
+      destroy:
+        success: 'ログアウトしました'
+    dashboards:
+      index:
+        to_projects: 'Project状況一覧へ'
+        to_user_in_charges: '案件担当状況一覧へ'
+        to_payment_results: '支払状況一覧へ'

@@ -15,4 +15,15 @@ Rails.application.routes.draw do
   delete 'projects/:project_id/:year/:month/:day', to: 'work_results#destroy', as: 'delete_work_result_daily'
   resources :payment_results, only: %i[index]
   resource :user_account, only: %i[show edit update]
+  namespace :admin do
+    root 'dashboards#index'
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    get 'logout', to: 'user_sessions#destroy'
+    delete 'logout', to: 'user_sessions#destroy'
+    resources :projects
+    resources :project_categories
+    resources :user_in_charges
+    resources :payment_results
+  end
 end

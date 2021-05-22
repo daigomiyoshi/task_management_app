@@ -6,7 +6,7 @@ ja:
       month_day: "%m月%d日 (%a)"
   time:
     formats:
-      default: "%Y/%m/%d %H:%M:%S"
+      default: "%Y/%m/%d %H:%M"
       hour_minutes: "%H:%M"
   number:
     currency:
@@ -18,7 +18,7 @@ ja:
         significant: false
         strip_insignificant_zeros: false
   button:
-    create: '登録'
+    create: '新規登録'
     edit: '編集'
     update: '更新'
     delete: '削除'

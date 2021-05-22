@@ -14,6 +14,9 @@ ja:
         role: 権限
       project:
         project_name: '案件名'
+        project_status: '案件ステータス'
+        created_at: '作成日'
+        updated_at: '更新日'
       project_category:
         project_category_name: '稼働カテゴリ'
       work_result:

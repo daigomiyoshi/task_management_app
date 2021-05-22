@@ -15,3 +15,8 @@ ja:
         failure: 'ログインに失敗しました'
       destroy:
         success: 'ログアウトしました'
+    dashboards:
+      index:
+        to_projects: 'Project状況一覧へ'
+        to_user_in_charges: '案件担当状況一覧へ'
+        to_payment_results: '支払状況一覧へ'

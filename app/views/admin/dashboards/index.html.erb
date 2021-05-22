@@ -1,2 +1,13 @@
-<h1>Admin::Dashboards#index</h1>
-<p>Find me in app/views/admin/dashboards/index.html.erb</p>
+<table class="table">
+  <tbody>
+    <tr>
+      <td><%= link_to t('.to_projects'), admin_projects_path, class: "text-dark" %></th>
+    </tr>
+    <tr>
+      <td><%= link_to t('.to_user_in_charges'), admin_user_in_charges_path, class: "text-dark" %></th>
+    </tr>
+    <tr>
+      <td><%= link_to t('.to_payment_results'), admin_payment_results_path, class: "text-dark" %></th>
+    </tr>
+  </tbody>
+</table>

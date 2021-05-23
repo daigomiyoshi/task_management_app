@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   patch 'projects/:project_id/:year/:month/:day/edit', to: 'work_results#update'
   delete 'projects/:project_id/:year/:month/:day', to: 'work_results#destroy', as: 'delete_work_result_daily'
   resources :payment_results, only: %i[index]
-  resource :user_account, only: %i[show edit update]
+  resource :user_account, only: %i[show]
   namespace :admin do
     root 'dashboards#index'
     get 'login', to: 'user_sessions#new'
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
     end
     resources :user_in_charges, only: %i[index new create edit update destroy]
     resources :payment_results
+    resources :user_accounts
   end
 end

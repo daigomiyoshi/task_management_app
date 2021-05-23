@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     post 'login', to: 'user_sessions#create'
     get 'logout', to: 'user_sessions#destroy'
     delete 'logout', to: 'user_sessions#destroy'
-    resources :projects, only: %i[index new create edit update destroy]
-    resources :project_categories, only: %i[show]
+    resources :projects, only: %i[index new create edit update destroy] do
+      resources :project_categories, only: %i[index new create edit update destroy]
+    end
     resources :user_in_charges
     resources :payment_results
   end

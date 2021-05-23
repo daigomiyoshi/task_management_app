@@ -1,0 +1,17 @@
+<div class="border-left-line">
+  <%= "#{main_title}" %>
+</div>
+
+<div class="main-content">
+  <%= form_with model: @project_category, url: url, local: true do |f| %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= f.label :project_category_name %></th>
+          <td><%= f.text_field :project_category_name, class:'form-control' %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit button, class: 'btn btn-primary' %>
+  <% end %>
+</div>

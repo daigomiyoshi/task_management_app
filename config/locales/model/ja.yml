@@ -19,6 +19,8 @@ ja:
         updated_at: '更新日'
       project_category:
         project_category_name: '稼働カテゴリ'
+        created_at: '作成日'
+        updated_at: '更新日'
       work_result:
         working_on: '稼働日'
         start_at: '開始時刻'

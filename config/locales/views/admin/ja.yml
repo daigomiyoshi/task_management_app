@@ -18,9 +18,10 @@ ja:
         success: 'ログアウトしました'
     dashboards:
       index:
-        to_projects: 'Project状況一覧へ'
+        to_projects: '案件状況一覧へ'
         to_user_in_charges: '案件担当状況一覧へ'
         to_payment_results: '支払状況一覧へ'
+        to_user_accounts: '担当者口座情報一覧へ'
     projects:
       index:
         main_title: '案件一覧'
@@ -37,6 +38,7 @@ ja:
         failure: '案件情報の登録に失敗しました'
       destroy:
         success: '案件を削除しました'
+        failure: '案件の削除に失敗しました'
     project_categories:
       index:
         main_title: '稼働カテゴリ一覧'
@@ -54,6 +56,7 @@ ja:
         failure: '稼働カテゴリ情報の登録に失敗しました'
       destroy:
         success: '稼働カテゴリを削除しました'
+        failure: '稼働カテゴリの削除に失敗しました'
     user_in_charges:
       index:
         main_title: '案件担当状況一覧'
@@ -70,3 +73,24 @@ ja:
         failure: '案件担当情報の登録に失敗しました'
       destroy:
         success: '案件担当を削除しました'
+        failure: '案件担当の削除に失敗しました'
+    user_accounts:
+      index:
+        main_title: '担当者情報一覧'
+        no_user_account: '口座情報なし'
+      new:
+        main_title: '担当者口座情報登録'
+      create:
+        success: '新規口座情報を登録しました'
+        failure: '新規口座情報の登録に失敗しました'
+      show:
+        main_title: '担当者口座情報詳細'
+        delete_confirm: '担当者の口座情報を削除してもよろしいですか？'
+      edit:
+        main_title: '担当者口座情報編集'
+      update:
+        success: '担当者口座情報を更新しました'
+        failure: '担当者口座情報の登録に失敗しました'
+      destroy:
+        success: '担当者口座情報を削除しました'
+        failure: '担当者口座情報の削除に失敗しました'

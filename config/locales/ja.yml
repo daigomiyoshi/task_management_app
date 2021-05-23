@@ -19,6 +19,7 @@ ja:
         strip_insignificant_zeros: false
   button:
     create: '新規登録'
+    show: '詳細情報'
     edit: '編集'
     update: '更新'
     delete: '削除'

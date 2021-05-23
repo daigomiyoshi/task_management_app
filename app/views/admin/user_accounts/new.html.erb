@@ -1,16 +1,21 @@
-<div class="alert alert-warning" role="alert">
-  <%= t('.warning') %>
-</div>
-
 <div class="border-left-line">
   <%= t('.main_title') %>
 </div>
 
 <div class="main-content">
-  <%= form_with model: @user_account do |f| %>
-    <%= render 'shared/error_messages', {object: f.object} %>
+  <%= form_with model: @user_account, url: admin_user_accounts_path, local: true do |f| %>
     <table class="table">
       <tbody>
+        <tr>
+          <td><%= f.label :user_id %></td>
+          <td>
+            <%= 
+              f.collection_select :user_id, 
+              @users, :id, :full_name,
+              {:include_blank => true}, { class:'form-control' } 
+            %>
+          </td>
+        </tr>
         <tr>
           <td><%= f.label :bank_name %></th>
           <td><%= f.text_field :bank_name, class:'form-control' %></td>
@@ -25,10 +30,13 @@
         </tr>
         <tr>
           <td><%= f.label :bank_account_type %></th>
-          <td><%= f.select :bank_account_type,
-            UserAccount.bank_account_types_i18n.keys.map{
+          <td>
+            <%=
+              f.select :bank_account_type,
+              UserAccount.bank_account_types_i18n.keys.map{
               |k| [I18n.t("enums.user_account.bank_account_type.#{k}"), k]
-            }, {}, { class:'form-control' } %>
+              }, {}, { class:'form-control' } 
+            %>
           </td>
         </tr>
         <tr>
@@ -41,6 +49,6 @@
         </tr>
       </tbody>
     </table>
-    <%= f.submit t('button.update'), class: 'btn btn-primary' %>
+    <%= f.submit t('button.create'), class: 'btn btn-primary' %>
   <% end %>
 </div>

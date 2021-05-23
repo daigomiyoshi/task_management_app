@@ -1,0 +1,48 @@
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <%= form_with model: @user_account, url: admin_user_account_path, local: true do |f| %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= f.label :user_id %></td>
+          <td><%= @user.full_name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :bank_name %></th>
+          <td><%= f.text_field :bank_name, class:'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :bank_branch_name %></th>
+          <td><%= f.text_field :bank_branch_name, class:'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :bank_branch_code %></th>
+          <td><%= f.number_field :bank_branch_code, class:'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :bank_account_type %></th>
+          <td>
+            <%=
+              f.select :bank_account_type,
+              UserAccount.bank_account_types_i18n.keys.map{
+              |k| [I18n.t("enums.user_account.bank_account_type.#{k}"), k]
+              }, {}, { class:'form-control' } 
+            %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :bank_account_code %></th>
+          <td><%= f.number_field :bank_account_code, class:'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :bank_account_name %></th>
+          <td><%= f.text_field :bank_account_name, class:'form-control' %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit t('button.update'), class: 'btn btn-primary' %>
+  <% end %>
+</div>

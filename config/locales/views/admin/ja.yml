@@ -94,3 +94,33 @@ ja:
       destroy:
         success: '担当者口座情報を削除しました'
         failure: '担当者口座情報の削除に失敗しました'
+    payment_results:
+      index:
+        main_title: '支払情報一覧'
+      select_to_create:
+        main_title: '登録する支払情報の選択'
+        user_name: '氏名'
+        project_name: '案件名'
+        working_month: '稼働月'
+        total_working_hours: '合計稼働時間(H)'
+        user_wage: '時給単価(円)'
+        payment_amount: '予定支払額'
+        working_day: '稼働記入日数 / 月日数'
+        select_to_create: '選択'
+      new:
+        main_title: '支払情報登録'
+      create:
+        success: '新規支払情報を登録しました'
+        failure: '新規支払情報の登録に失敗しました'
+      show:
+        main_title: '支払情報詳細'
+        payment_results: '支払情報一覧へ'
+        delete_confirm: '担当者の口座情報を削除してもよろしいですか？'
+      edit:
+        main_title: '支払情報編集'
+      update:
+        success: '支払情報を更新しました'
+        failure: '支払情報の登録に失敗しました'
+      destroy:
+        success: '支払情報を削除しました'
+        failure: '支払情報の削除に失敗しました'

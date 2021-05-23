@@ -1,0 +1,52 @@
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <%= form_with model: @payment_result, url: admin_payment_results_path, local: true do |f| %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= f.label :user_id %></td>
+          <td>
+            <%= f.hidden_field :user_id, :value => @payment_result.user_id %>
+            <%= User.find(@payment_result.user_id).full_name %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :project_id %></th>
+          <td>
+            <%= f.hidden_field :project_id, :value => @payment_result.project_id %>
+            <%= Project.find(@payment_result.project_id).project_name %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :working_month %></th>
+          <td>
+            <%= f.hidden_field :working_month, :value => @payment_result.working_month %>
+            <%= l @payment_result.working_month, format: :year_month %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :payment_amount %></th>
+          <td>
+            <%= f.hidden_field :payment_amount, :value => @payment_result.payment_amount %>
+            <%= number_to_currency(@payment_result.payment_amount) %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :payment_on %></th>
+          <td>
+            <%= f.hidden_field :payment_on, :value => @payment_result.working_month.next_month.end_of_month %>
+            <%= l @payment_result.working_month.next_month.end_of_month, format: :default %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :payment_note_url %></th>
+          <td><%= f.text_field :payment_note_url, class:'form-control' %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit t('button.create'), class: 'btn btn-primary' %>
+  <% end %>
+</div>

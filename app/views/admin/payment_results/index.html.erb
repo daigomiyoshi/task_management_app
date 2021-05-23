@@ -1,0 +1,36 @@
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <div style="text-align:right; margin:1em 3em">
+    <%= link_to t('button.create'), select_to_create_admin_payment_results_path, class: 'btn btn-info' %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= PaymentResult.human_attribute_name(:project_id) %></th>
+        <th><%= PaymentResult.human_attribute_name(:working_month) %></th>
+        <th><%= PaymentResult.human_attribute_name(:user_id) %></th>
+        <th><%= PaymentResult.human_attribute_name(:payment_amount) %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @payment_results.each do |payment_result| %>
+        <tr>
+          <td><%= payment_result.project.project_name %></td>
+          <td><%= l payment_result.working_month, format: :year_month %></td>
+          <td><%= payment_result.user.full_name %></td>
+          <td><%= number_to_currency(payment_result.payment_amount) %></td>
+          <td style="text-align:right;">
+            <%= link_to t('button.show'), 
+                admin_payment_result_path(payment_result),
+                class: 'btn btn-info' 
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

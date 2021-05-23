@@ -1,0 +1,37 @@
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <%= form_with model: @payment_result, url: admin_payment_result_path, local: true do |f| %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= f.label :user_id %></td>
+          <td><%= @payment_result.user.full_name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :project_id %></td>
+          <td><%= @payment_result.project.project_name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :working_month %></th>
+          <td><%= @payment_result.working_month %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :payment_amount %></th>
+          <td><%= number_to_currency(@payment_result.payment_amount) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :payment_on %></th>
+          <td><%= f.date_field :payment_on, class:'form-control' %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :payment_note_url %></th>
+          <td><%= f.text_field :payment_note_url, class:'form-control' %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit t('button.update'), class: 'btn btn-primary' %>
+  <% end %>
+</div>

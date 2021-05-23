@@ -1,0 +1,64 @@
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <div style="margin: 1em"><%= link_to t('.payment_results'), admin_payment_results_path, class:'text-dark' %></div>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:user_id) %></th>
+        <td><%= @payment_result.user.full_name %></td>
+      </tr>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:project_id) %></th>
+        <td><%= @payment_result.project.project_name %></td>
+      </tr>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:working_month) %></th>
+        <td><%= l @payment_result.working_month, format: :year_month %></td>
+      </tr>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:payment_amount) %></th>
+        <td><%= number_to_currency(@payment_result.payment_amount) %></td>
+      </tr>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:payment_on) %></th>
+        <td>
+          <% if !@payment_result.payment_on.nil? %>
+            <%= l @payment_result.payment_on, format: :default %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:payment_note_url) %></th>
+        <td>
+          <% if !@payment_result.payment_note_url.nil? %>
+            <%= 
+              link_to @payment_result.payment_note_url, @payment_result.payment_note_url, 
+              target: :_blank, rel: 'noopener noreferrer'
+            %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:created_at) %></th>
+        <td><%= l @payment_result.created_at, format: :default %></td>
+      </tr>
+      <tr>
+        <td><%= PaymentResult.human_attribute_name(:updated_at) %></th>
+        <td><%= l @payment_result.updated_at, format: :default %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to t('button.edit'), 
+      edit_admin_payment_result_path(@payment_result), 
+      class: 'btn btn-info'
+  %>
+  <%= link_to t('button.delete'), 
+    admin_payment_result_path(@payment_result),
+    method: :delete,
+    data: { confirm: t('.delete_confirm') },
+    class: 'btn btn-danger'
+  %>
+</div>

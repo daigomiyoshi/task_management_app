@@ -1,0 +1,47 @@
+<div class="border-left-line">
+  <%= t('.main_title') %>
+</div>
+
+<div class="main-content">
+  <div style="text-align:right; margin:1em 3em">
+    <%= link_to t('button.create'), new_admin_user_in_charge_path, class: 'btn btn-info'%>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= UserInCharge.human_attribute_name(:user_id) %></th>
+        <th><%= UserInCharge.human_attribute_name(:project_id) %></th>
+        <th><%= UserInCharge.human_attribute_name(:user_wage) %></th>
+        <th><%= UserInCharge.human_attribute_name(:created_at) %></th>
+        <th><%= UserInCharge.human_attribute_name(:updated_at) %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_in_charges.each do |user_in_charge| %>
+        <tr>
+          <td><%= User.find(user_in_charge.user_id).full_name %></td>
+          <td><%= Project.find(user_in_charge.project_id).project_name %></td>
+          <td><%= number_to_currency(user_in_charge.user_wage) %></td>
+          <td><%= l user_in_charge.created_at, format: :default %></td>
+          <td><%= l user_in_charge.updated_at, format: :default %></td>
+          <td>
+            <%= link_to t('button.edit'), 
+                edit_admin_user_in_charge_path(user_in_charge), 
+                class: 'btn btn-info' 
+            %>
+          </td>
+          <td>
+            <%= link_to t('button.delete'), 
+                admin_user_in_charge_path(user_in_charge),
+                method: :delete,
+                data: { confirm: t('.delete_confirm') },
+                class: 'btn btn-danger'
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -22,7 +22,7 @@
         <tr>
           <td>
             <%= link_to project.project_name, 
-            admin_project_category_path(ProjectCategory.where(project_id: project.id)),
+            admin_project_project_categories_path(project.id),
             class: 'text-dark'
             %>
           </td>

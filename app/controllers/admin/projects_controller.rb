@@ -10,7 +10,6 @@ class Admin::ProjectsController < Admin::ApplicationController
   end
 
   def create
-    binding.pry
     @project = Project.new(project_params)
     if @project.save
       redirect_to admin_projects_path, success: t('.success')

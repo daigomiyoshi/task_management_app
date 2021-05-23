@@ -1,0 +1,48 @@
+<div class="border-left-line">
+  <%= "#{@project.project_name} | #{t('.main_title')}" %>
+</div>
+
+<div class="main-content">
+  <div><%= link_to t('.projects'), admin_projects_path, class:'text-dark' %></div>
+  <div style="text-align:right; margin:1em 3em">
+    <%= 
+      link_to t('button.create'), 
+      new_admin_project_project_category_path(@project), 
+      class: 'btn btn-info' 
+    %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= ProjectCategory.human_attribute_name(:project_category_name) %></th>
+        <th><%= ProjectCategory.human_attribute_name(:created_at) %></th>
+        <th><%= ProjectCategory.human_attribute_name(:updated_at) %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project_categories.each do |project_category| %>
+        <tr>
+          <td><%= project_category.project_category_name %></td>
+          <td><%= l project_category.created_at, format: :default %></td>
+          <td><%= l project_category.updated_at, format: :default %></td>
+          <td>
+            <%= link_to t('button.edit'), 
+                edit_admin_project_project_category_path(@project, project_category), 
+                class: 'btn btn-info' 
+            %>
+          </td>
+          <td>
+            <%= link_to t('button.delete'), 
+                admin_project_project_category_path(@project, project_category), 
+                method: :delete,
+                data: { confirm: t('.delete_confirm') },
+                class: 'btn btn-danger'
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

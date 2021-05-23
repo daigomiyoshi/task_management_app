@@ -2,6 +2,7 @@ ja:
   admin:
     shared:
       header:
+        dashboards: '管理画面トップ'
         logout: 'ログアウト'
     user_sessions:
       new:
@@ -36,3 +37,20 @@ ja:
         failure: '案件情報の登録に失敗しました'
       destroy:
         success: '案件を削除しました'
+    project_categories:
+      index:
+        main_title: '稼働カテゴリ一覧'
+        projects: '案件一覧へ'
+        delete_confirm: '稼働カテゴリを削除してもよろしいですか？'
+      new:
+        main_title: '稼働カテゴリ登録'
+      create:
+        success: '新規稼働カテゴリを登録しました'
+        failure: '新規稼働カテゴリの登録に失敗しました'
+      edit:
+        main_title: '稼働カテゴリ情報編集'
+      update:
+        success: '稼働カテゴリ情報を更新しました'
+        failure: '稼働カテゴリ情報の登録に失敗しました'
+      destroy:
+        success: '稼働カテゴリを削除しました'

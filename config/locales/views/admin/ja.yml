@@ -54,3 +54,19 @@ ja:
         failure: '稼働カテゴリ情報の登録に失敗しました'
       destroy:
         success: '稼働カテゴリを削除しました'
+    user_in_charges:
+      index:
+        main_title: '案件担当状況一覧'
+        delete_confirm: '案件担当を削除してもよろしいですか？'
+      new:
+        main_title: '案件担当登録'
+      create:
+        success: '新規案件担当を登録しました'
+        failure: '新規案件担当の登録に失敗しました'
+      edit:
+        main_title: '案件担当情報編集'
+      update:
+        success: '案件担当情報を更新しました'
+        failure: '案件担当情報の登録に失敗しました'
+      destroy:
+        success: '案件担当を削除しました'

@@ -1,0 +1,37 @@
+<div class="border-left-line">
+  <%= "#{main_title}" %>
+</div>
+
+<div class="main-content">
+  <%= form_with model: @user_in_charge, url: url, local: true do |f| %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= f.label :project_id %></th>
+          <td>
+            <%= 
+              f.collection_select :project_id, 
+              Project.doing, :id, :project_name,
+              {:include_blank => true}, { class:'form-control' } 
+            %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :user_id %></th>
+          <td>
+            <%= 
+              f.collection_select :user_id, 
+              User.all, :id, :full_name, 
+              {:include_blank => true}, { class:'form-control' } 
+            %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :user_wage %></th>
+          <td><%= f.number_field :user_wage, class:'form-control' %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit button, class: 'btn btn-primary' %>
+  <% end %>
+</div>

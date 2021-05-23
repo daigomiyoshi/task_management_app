@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :projects, only: %i[index new create edit update destroy] do
       resources :project_categories, only: %i[index new create edit update destroy]
     end
-    resources :user_in_charges
+    resources :user_in_charges, only: %i[index new create edit update destroy]
     resources :payment_results
   end
 end

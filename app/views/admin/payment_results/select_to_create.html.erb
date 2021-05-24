@@ -28,11 +28,11 @@
           <td><%= "#{payment_results_candidate['count_results']} / #{payment_results_candidate['monthly_days']}" %></td>
           <td style="text-align:right;">
             <%= link_to t('.select_to_create'), 
-                new_admin_payment_results_path(
-                  payment_results_candidate['user_id'],
-                  payment_results_candidate['project_id'],
-                  payment_results_candidate['working_month'],
-                  payment_results_candidate['payment_amount']
+                new_admin_payment_result_path(
+                  user_id: payment_results_candidate['user_id'],
+                  project_id: payment_results_candidate['project_id'],
+                  working_month: payment_results_candidate['working_month'],
+                  payment_amount: payment_results_candidate['payment_amount']
                 ),
                 class: 'btn btn-info' 
             %>

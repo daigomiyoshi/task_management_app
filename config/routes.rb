@@ -25,9 +25,8 @@ Rails.application.routes.draw do
       resources :project_categories, only: %i[index new create edit update destroy]
     end
     resources :user_in_charges, only: %i[index new create edit update destroy]
-    resources :payment_results, only: %i[index create show edit update destroy] do
+    resources :payment_results do
       collection do
-        get 'new/:user_id/:project_id/:working_month/:payment_amount', to: 'payment_results#new', as: 'new'
         get 'select_to_create'
       end
     end

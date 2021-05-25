@@ -19,7 +19,8 @@ class Admin::PaymentResultsController < Admin::ApplicationController
   end
   
   def create
-    @payment_result = PaymentResult.new(payment_result_parars)
+    @payment_result = PaymentResult.new(payment_result_params)
+    @payment_result[:payment_note_url] = @payment_result.change_blank_to_nil
     if @payment_result.save
       redirect_to admin_payment_results_path, success: t('.success')
     else
@@ -33,7 +34,7 @@ class Admin::PaymentResultsController < Admin::ApplicationController
   def edit; end
   
   def update
-    if @payment_result.update(payment_result_parars)
+    if @payment_result.update(payment_result_params)
       redirect_to admin_payment_result_path(@payment_result), success: t('.success')
     else
       flash.now[:danger] = t('.failure')
@@ -55,7 +56,7 @@ class Admin::PaymentResultsController < Admin::ApplicationController
     @payment_result = PaymentResult.find(params[:id])    
   end
 
-  def payment_result_parars
+  def payment_result_params
     params.require(:payment_result).permit(
       :user_id,
       :project_id,

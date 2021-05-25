@@ -13,6 +13,11 @@ class WorkResult < ApplicationRecord
     where("YEAR(working_on) = ? and MONTH(working_on) = ? and DAY(working_on) = ?", year, month, day) 
   }
 
+  scope :get_monthly_total_working_hours, -> (user_id, project_id, year, month) {
+    where("user_id = ? and project_id = ? and YEAR(working_on) = ? and MONTH(working_on) = ?", user_id, project_id, year, month)
+    .group("YEAR(working_on)", "MONTH(working_on)").sum(:working_hours).values[0].round(1)
+  }
+
   def self.aggregate_monthly_working_results
     query = "
       WITH aggregated_monthly_working_result AS (

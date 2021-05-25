@@ -1,9 +1,19 @@
+.header-content {
+  display:flex;
+}
+
+.work-result-summary {
+  margin: 0 0 0 auto;
+  margin-top: 50px;
+  font-size: 20px;
+}
+
 .work-result-main-content {
   padding: 1em;
   margin: 1em;
   background-color:#FFF;
   border-radius: 10px;
-  display:flex;
+  display: flex;
 }
 
 .main-content-side {
@@ -13,7 +23,7 @@
 
 .this-month {
   text-align: center;
-  display: block;  
+  display: block;
 }
 
 .next-month {

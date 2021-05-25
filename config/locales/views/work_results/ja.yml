@@ -4,6 +4,7 @@ ja:
       main_title: '稼働状況'
       next_month: '次の月へ'
       last_month: '前の月へ'
+      monthly_total_working_hours: '合計稼働時間'
       working_status: '稼働ステータス'
       work_result_fixed: '稼働FIX済み'
       create_work_result: '稼働実績を記録する'

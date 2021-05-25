@@ -1,5 +1,12 @@
-<div class="border-left-line">
-  <%= "#{@project.project_name} | #{t('.main_title')}" %>
+<div class="header-content">
+  <div class="border-left-line">
+    <%= "#{@project.project_name} | #{t('.main_title')}" %>
+  </div>
+  <div class="work-result-summary">
+    <%= "#{t('.monthly_total_working_hours')}: #{
+        WorkResult.get_monthly_total_working_hours(current_user, @project.id, @year, @month)
+        } 時間" %>
+  </div>
 </div>
 
 <div class="work-result-main-content">

@@ -4,7 +4,7 @@ class WorkResultsController < ApplicationController
                 :render_edit_or_create_without_work_button,
                 :render_show_button
   before_action :set_project, only: %i[show_monthly new create creat_without_work show edit update destroy]
-  before_action :set_project_categories, only: %i[new create edit]
+  before_action :set_project_categories, only: %i[new create edit update]
   before_action :set_year, only: %i[show_monthly new create creat_without_work show edit update destroy]
   before_action :set_month, only: %i[show_monthly new create creat_without_work show edit update destroy]
   before_action :set_day, only: %i[new create creat_without_work show edit update destroy]

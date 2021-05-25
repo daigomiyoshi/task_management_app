@@ -4,6 +4,7 @@
 
 <div class="main-content">
   <%= form_with model: @work_result, url: url do |f| %>
+    <%= render 'shared/error_messages', { object: f.object } %>
     <table class="table">
       <tbody>
         <tr>

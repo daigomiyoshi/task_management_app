@@ -4,7 +4,7 @@ class WorkResult < ApplicationRecord
   belongs_to :project_category, optional: true
 
   validates :working_on, presence: true
-  validates :working_hours, length: { minimum: 0, maximum: 24 }
+  validates :working_hours, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 24 }
 
   scope :filter_by_year_month, -> (year, month) { 
     where("YEAR(working_on) = ? and MONTH(working_on) = ?", year, month) 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
+  get 'logout', to: 'user_sessions#destroy'
   delete 'logout', to: 'user_sessions#destroy'
   get 'projects/:project_id/:year/:month', to: 'work_results#show_monthly', as: 'work_result_monthly'
   get 'projects/:project_id/:year/:month/:day/new', to: 'work_results#new', as: 'new_work_result_daily'

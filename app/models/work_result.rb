@@ -12,11 +12,21 @@ class WorkResult < ApplicationRecord
   scope :filter_by_year_month_day, -> (year, month, day) { 
     where("YEAR(working_on) = ? and MONTH(working_on) = ? and DAY(working_on) = ?", year, month, day) 
   }
-
   scope :get_monthly_total_working_hours, -> (user_id, project_id, year, month) {
-    where("user_id = ? and project_id = ? and YEAR(working_on) = ? and MONTH(working_on) = ?", user_id, project_id, year, month)
-    .group("YEAR(working_on)", "MONTH(working_on)").sum(:working_hours).values[0].round(1)
+    if self.has_user_project_work_result(user_id, project_id, year, month)
+      where(
+        "user_id = ? and project_id = ? and YEAR(working_on) = ? and MONTH(working_on) = ?", 
+        user_id, project_id, year, month
+      ).group("YEAR(working_on)", "MONTH(working_on)").sum(:working_hours).values[0].round(1)
+    else
+      0
+    end
   }
+
+  def self.has_user_project_work_result(user_id, project_id, year, month)
+    where("user_id = ? and project_id = ? and YEAR(working_on) = ? and MONTH(working_on) = ?", 
+      user_id, project_id, year, month).exists?
+  end
 
   def self.aggregate_monthly_working_results
     query = "
